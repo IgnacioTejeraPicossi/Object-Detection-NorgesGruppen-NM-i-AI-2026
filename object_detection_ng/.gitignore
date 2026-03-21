@@ -1,0 +1,14 @@
+data/raw/
+data/yolo/
+data/interim/
+experiments/
+*.pt
+*.pth
+*.onnx
+*.safetensors
+*.npy
+__pycache__/
+*.pyc
+.DS_Store
+submission/best.pt
+submission/submission.zip
