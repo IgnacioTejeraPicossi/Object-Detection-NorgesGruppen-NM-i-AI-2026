@@ -1,16 +1,19 @@
-# NM i AI 2026 — Exercise 1: Object Detection (planning document)
+> **Language:** Spanish (archived original / mixed draft).  
+> **Canonical English version:** [`../Object_Detection_Exercise1_Plan.md`](../Object_Detection_Exercise1_Plan.md)
 
-> **Spanish archive:** [`archive/Object_Detection_Exercise1_Plan_ES.md`](archive/Object_Detection_Exercise1_Plan_ES.md)
+---
 
-Below is a step-by-step plan intended for execution with Cursor AI, with a practical focus on Exercise 1: Object Detection.
+Plan de la NM i AI 2026 para el Ejercicio 1: Object Detection.
 
-**Assumptions:**
-- **Initial competitive goal:** get a solid, reliable submission quickly.
-- **Recommended strategy:** start with a fine-tuned YOLOv8 solution — it fits the sandbox, preinstalled libraries, and the 300-second limit well.
-- **Phased technical goals:**
-  1. A valid submission as soon as possible,
-  2. Then improve detection,
-  3. Finally improve product classification.
+....
+Sí. Te preparo un plan paso a paso, pensado para ejecutarlo con Cursor AI, con enfoque muy práctico para este Ejercicio 1: Object Detection.
+Voy a asumir este objetivo:
+•	Objetivo competitivo inicial: conseguir una submission sólida y fiable rápido.
+•	Estrategia recomendada: empezar con una solución YOLOv8 fine-tuned porque encaja muy bien con el sandbox, las librerías preinstaladas y el límite de 300 segundos.
+•	Objetivo técnico realista en fases:
+1.	tener una submission válida cuanto antes,
+2.	luego mejorar detección,
+3.	finalmente mejorar clasificación de producto.
 ________________________________________
 Implementation Plan for Cursor AI
 AI_NM_2026 – Exercise 1: Object Detection (NorgesGruppen Data)
@@ -464,43 +467,49 @@ ________________________________________
 
 16. My recommendation in one sentence
 Start with a clean YOLOv8m/l fine-tuning pipeline, get a valid submission immediately, optimize detection first, and only then invest in product-reference-image-based classification improvements.
-*(Optional follow-up: a more operational “Cursor AI execution pack” can include exact prompts for Cursor, a full file tree, and a starter `run.py` to adapt.)*
+Si quieres, en el siguiente mensaje te hago la versión 2 todavía más operativa: un “Cursor AI execution pack” con:
 
-**Version 2 — execution pack (summary)**  
-Three deliverables:
-1. Full execution pack  
-2. Exact prompts for Cursor AI  
-3. A first `run.py` baseline ready to adapt  
+•	prompts exactos para Cursor,
+•	estructura de archivos completa,
+•	y un primer run.py base listo para adaptar.
 
-Everything is aimed at reaching a valid submission quickly, then improving it without breaking sandbox compatibility.
+Ignacio: Si haz, en el siguiente mensaje la versión 2 todavía más operativa: un “Cursor AI execution pack” con:
+prompts exactos para Cursor,
+estructura de archivos completa,
+y un primer run.py base listo para adaptar. Gracias
+Perfecto. Aquí tienes la versión 2, mucho más operativa, pensada para que la ejecutes con Cursor AI de forma casi directa.
+Voy a darte 3 cosas:
+1.	Execution pack completo
+2.	Prompts exactos para Cursor AI
+3.	Un primer run.py base listo para adaptar
+Todo está orientado a llegar rápido a una submission válida, y luego mejorarla sin romper compatibilidad con el sandbox.
 ________________________________________
 Cursor AI Execution Pack
 AI_NM_2026 – Exercise 1: Object Detection (NorgesGruppen Data)
 ________________________________________
-1. Recommended implementation strategy  
-For this exercise, the safest path is:
-
-**Phase 1** — Build a simple, robust, submittable solution:
-- COCO → YOLO conversion  
-- Fine-tuned YOLOv8 training  
-- Sandbox-compatible `run.py`  
-- First valid zip  
-
-**Phase 2** — Improve score:
-- Threshold tuning  
-- Compare YOLOv8m vs YOLOv8l  
-- Input resolution  
-- TTA if it fits in the time budget  
-
-**Phase 3** — Improve classification:
-- Use product reference images  
-- Classifier / re-ranking  
-- Ensemble if it pays off  
-
-The key is not to overcomplicate things before you have a stable submission.
+1. Estrategia de implementación recomendada
+Para este ejercicio, la ruta más segura es:
+Fase 1
+Construir una solución simple, robusta y submitible:
+•	conversión COCO → YOLO
+•	entrenamiento YOLOv8 fine-tuned
+•	run.py compatible con sandbox
+•	primer zip válido
+Fase 2
+Mejorar score:
+•	tuning de thresholds
+•	comparar yolov8m vs yolov8l
+•	input resolution
+•	TTA si cabe en tiempo
+Fase 3
+Mejorar clasificación:
+•	usar product reference images
+•	classifier / re-ranking
+•	ensemble si compensa
+La clave aquí es no complicarse demasiado antes de tener una submission estable.
 ________________________________________
-2. Full file structure  
-Ask Cursor AI to create exactly this structure:
+2. Estructura de archivos completa
+Pídele a Cursor AI que cree exactamente esta estructura:
 object_detection_ng/
 ├── README.md
 ├── requirements.txt
@@ -564,24 +573,28 @@ object_detection_ng/
 └── notebooks/
     └── quick_error_analysis.ipynb
 ________________________________________
-3. Exact work order  
-Follow this order with Cursor:
-
-| Step | Script / artifact |
-|------|---------------------|
-| 1 | `analyze_dataset.py` |
-| 2 | `prepare_dataset.py` |
-| 3 | `train_yolov8.py` |
-| 4 | `infer_local.py` |
-| 5 | `validate_competition.py` |
-| 6 | `submission/run.py` |
-| 7 | `test_run_local.py` |
-| 8 | `build_submission.py` |
-
-This order minimizes mistakes and wasted time.
+3. Orden exacto de trabajo
+Este es el orden que debes seguir con Cursor:
+Paso 1
+analyze_dataset.py
+Paso 2
+prepare_dataset.py
+Paso 3
+train_yolov8.py
+Paso 4
+infer_local.py
+Paso 5
+validate_competition.py
+Paso 6
+submission/run.py
+Paso 7
+test_run_local.py
+Paso 8
+build_submission.py
+Ese orden minimiza errores y evita perder tiempo.
 ________________________________________
-4. Master prompt for Cursor AI  
-Paste this first in Cursor to set global context:
+4. Prompt maestro para Cursor AI
+Pega esto primero en Cursor para establecer el contexto global:
 We are implementing a competition solution for AI_NM_2026 Exercise 1: "Object Detection" from NorgesGruppen Data.
 
 Goal:
@@ -619,7 +632,7 @@ Coding style:
 - Modular helper functions
 - Keep files focused and maintainable
 ________________________________________
-5. Exact prompt to create `analyze_dataset.py`
+5. Prompt exacto para crear analyze_dataset.py
 Create a production-quality Python script at src/analyze_dataset.py.
 
 Purpose:
@@ -650,7 +663,7 @@ Requirements:
 
 The script should not depend on notebook-only features.
 ________________________________________
-6. Exact prompt to create `prepare_dataset.py`
+6. Prompt exacto para crear prepare_dataset.py
 Create a production-quality Python script at src/prepare_dataset.py.
 
 Purpose:
@@ -692,7 +705,7 @@ Requirements:
 
 Also include helper functions so the logic is easy to test.
 ________________________________________
-7. Exact prompt to create `train_yolov8.py`
+7. Prompt exacto para crear train_yolov8.py
 Create a clean training script at src/train_yolov8.py using ultralytics YOLO.
 
 Requirements:
@@ -718,7 +731,7 @@ Requirements:
 
 Also add comments indicating which arguments are most important to tune for this competition.
 ________________________________________
-8. Exact prompt to create `infer_local.py`
+8. Prompt exacto para crear infer_local.py
 Create a local inference script at src/infer_local.py.
 
 Purpose:
@@ -747,7 +760,7 @@ Requirements:
 
 Keep the script very close to what we will later use in submission/run.py.
 ________________________________________
-9. Exact prompt to create `validate_competition.py`
+9. Prompt exacto para crear validate_competition.py
 Create a Python script at src/validate_competition.py.
 
 Purpose:
@@ -773,8 +786,8 @@ Requirements:
 
 Keep the code readable and trustworthy rather than overly clever.
 ________________________________________
-10. Exact prompt to create `submission/run.py`  
-This is probably the most important prompt.
+10. Prompt exacto para crear submission/run.py
+Este es probablemente el prompt más importante.
 Create a sandbox-safe competition inference script at submission/run.py.
 
 Purpose:
@@ -821,7 +834,7 @@ Implementation details:
 Important:
 Assume the competition category IDs are already aligned in the trained model. Do not remap category IDs unless a mapping file is explicitly loaded.
 ________________________________________
-11. Exact prompt to create `test_run_local.py`
+11. Prompt exacto para crear test_run_local.py
 Create a local smoke test script at src/test_run_local.py.
 
 Purpose:
@@ -843,7 +856,7 @@ Requirements:
 
 Keep it practical and simple.
 ________________________________________
-12. Exact prompt to create `build_submission.py`
+12. Prompt exacto para crear build_submission.py
 Create a packaging script at src/build_submission.py.
 
 Purpose:
@@ -867,8 +880,8 @@ Requirements:
 
 Keep the implementation concise and reliable.
 ________________________________________
-13. Starter `run.py` baseline to adapt  
-This works as a real baseline. Paste it into Cursor for refinement, or adapt it yourself.
+13. Primer run.py base listo para adaptar
+Este ya te sirve como base real. Puedes pegarlo en Cursor y pedir que lo refine, o adaptarlo tú directamente.
 import argparse
 import json
 from pathlib import Path
@@ -977,8 +990,8 @@ def main():
 if __name__ == "__main__":
     main()
 ________________________________________
-14. Improved `run.py` with small useful extras  
-This version adds a bit of robustness without overcomplicating things.
+14. Versión mejorada de run.py con pequeños extras útiles
+Esta versión añade algo de robustez sin complicarlo demasiado.
 import argparse
 import json
 from pathlib import Path
@@ -1136,29 +1149,28 @@ def main() -> None:
 if __name__ == "__main__":
     main()
 ________________________________________
-15. Initial hyperparameter recommendations  
-Start with:
-
-**Training baseline**
-- Model: `yolov8m.pt`
-- `imgsz=1280`
-- `epochs=80`
-- `batch=8` or auto depending on GPU
-- `patience=20`
-- `close_mosaic=10`
-
-**Inference baseline**
-- `imgsz=1280`
-- `conf=0.10`
-- `iou=0.60`
-- `max_det=400`
-
-Then try:
-- `conf=0.08`, `conf=0.12`
-- `iou=0.55`, `iou=0.65`
+15. Recomendación de hiperparámetros iniciales
+Empieza así:
+Entrenamiento baseline
+•	modelo: yolov8m.pt
+•	imgsz=1280
+•	epochs=80
+•	batch=8 o auto según GPU
+•	patience=20
+•	close_mosaic=10
+Inference baseline
+•	imgsz=1280
+•	conf=0.10
+•	iou=0.60
+•	max_det=400
+Luego prueba:
+•	conf=0.08
+•	conf=0.12
+•	iou=0.55
+•	iou=0.65
 ________________________________________
-16. What to ask Cursor after the first baseline  
-Once training + inference + zip work, use this prompt:
+16. Qué pedirle a Cursor después del primer baseline
+Cuando ya tengas entrenamiento + inferencia + zip funcionando, usa este prompt:
 Now review the baseline pipeline and suggest the top 5 highest-impact improvements for this specific competition, prioritizing:
 1. better detection recall on dense shelf images
 2. stronger class discrimination across visually similar products
@@ -1172,44 +1184,47 @@ For each improvement, explain:
 - risk
 - whether it should be tested before or after first submission
 ________________________________________
-17. First three iterations (suggested)
-**Iteration 1 — Goal: valid zip**
-- Analyse dataset  
-- Convert to YOLO  
-- Train YOLOv8m  
-- Create `run.py`  
-- Test locally  
-- Build zip  
-
-**Iteration 2 — Goal: improve score without extra complexity**
-- Compare YOLOv8m vs YOLOv8l  
-- Tune `conf`, `iou`, `max_det`  
-- Review visual failures  
-
-**Iteration 3 — Goal: real competitive gain**
-- Light TTA or ensemble  
-- Optional auxiliary classifier if validation shows it helps  
+17. Qué haría yo exactamente en tus primeras 3 iteraciones
+Iteración 1
+Objetivo: zip válido
+•	analizar dataset
+•	convertir a YOLO
+•	entrenar yolov8m
+•	crear run.py
+•	probar local
+•	generar zip
+Iteración 2
+Objetivo: mejorar score sin añadir complejidad
+•	comparar yolov8m vs yolov8l
+•	ajustar conf, iou, max_det
+•	revisar errores visuales
+Iteración 3
+Objetivo: mejora competitiva real
+•	TTA o ensemble ligero
+•	quizá clasificación auxiliar si validación lo justifica
 ________________________________________
-18. The single most important detail  
-Before training, confirm by reading the real `annotations.json`:
-- Exact number of categories  
-- Actual `category_id` range  
-- Whether `unknown_product` exists  
-- Whether there are effectively 356 or 357 classes  
-
-Do not assume this from the documentation alone.
+18. El detalle más importante de todos
+Antes de entrenar, Cursor debe confirmar leyendo el annotations.json real:
+•	número exacto de categorías,
+•	rango real de category_id,
+•	si existe o no unknown_product,
+•	si hay 356 o 357 clases efectivas.
+Eso no lo debes asumir desde la documentación.
 ________________________________________
-19. Final operational recommendation  
-**Best path right now:**
-- Set up a clean pipeline  
-- Get a working submission fast  
-- Validate locally with scoring similar to the official metric  
-- Only then move to more sophisticated improvements  
-
-That gives speed, control, and lower risk of breaking the submission.
-
-*(Optional follow-up: a “pack 3” can bundle starter files: `train_yolov8.py`, `infer_local.py`, `build_submission.py`, `test_run_local.py`.)*
-
-— Ignacio Tejera, March 2026
+19. Mi recomendación operativa final
+Tu mejor camino ahora mismo es este:
+•	montar pipeline limpio,
+•	sacar una submission funcional muy rápido,
+•	validar localmente con scoring parecido al oficial,
+•	y solo después ir a mejoras más sofisticadas.
+Eso te da velocidad, control y menos riesgo de romper el submit.
+En el siguiente mensaje te puedo preparar el pack 3, todavía más útil: un conjunto de archivos iniciales completos para copiar/pegar, incluyendo:
+•	train_yolov8.py
+•	infer_local.py
+•	build_submission.py
+•	test_run_local.py
+listos para que los pegues en Cursor.
+Ignacio Tejera
+Marzo 2026
 
 
