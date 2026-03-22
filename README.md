@@ -43,10 +43,17 @@ Train **YOLOv8m at 1280 px** on a **Google Colab GPU** using `object_detection_n
 
 ---
 
-## Detailed documentation (Exercise 1)
+## Documentation (English)
 
-- Full technical guide (pipeline, commands, layout): [`object_detection_ng/README.md`](object_detection_ng/README.md)
-- Official competition docs: [`docs/`](docs/) (Overview, Submission, Scoring, Examples)
+| Resource | Link |
+|----------|------|
+| **Docs index** (all Markdown files) | [`docs/README.md`](docs/README.md) |
+| Competition quick start | [`docs/Getting_Started.md`](docs/Getting_Started.md) |
+| Official task copy: Overview, Submission, Scoring, Examples | [`docs/Overview.md`](docs/Overview.md), [`docs/Submission.md`](docs/Submission.md), [`docs/Scoring.md`](docs/Scoring.md), [`docs/Examples.md`](docs/Examples.md) |
+| Implementation plan (Exercise 1, YOLOv8 pipeline) | [`docs/Object_Detection_Exercise1_Plan.md`](docs/Object_Detection_Exercise1_Plan.md) |
+| Implemented codebase (Exercise 1) | [`object_detection_ng/README.md`](object_detection_ng/README.md) |
+
+> Legacy filename `docs/Getting Starting.md` redirects to `Getting_Started.md`.
 
 ---
 
@@ -55,6 +62,6 @@ Train **YOLOv8m at 1280 px** on a **Google Colab GPU** using `object_detection_n
 ```
 AI NM i AI 2026/
 ├── README.md                 ← this file
-├── docs/                     ← competition PDFs / Markdown
+├── docs/                     ← English docs + competition Markdown
 └── object_detection_ng/      ← Exercise 1 (code + local data)
 ```
