@@ -5,7 +5,7 @@ Executed in the sandbox as:
 
 SANDBOX CONSTRAINTS:
     - Python 3.11, NVIDIA L4 GPU (24GB), CUDA 12.4
-    - No network access, 300s timeout, 8GB RAM
+    - No network access, 300s total timeout, 8GB RAM
     - ultralytics 8.1.0, torch 2.6.0+cu124 pre-installed
     - Blocked imports: os, sys, subprocess, socket, ctypes, builtins,
       importlib, pickle, marshal, shelve, shutil, yaml, requests,
@@ -15,17 +15,25 @@ SANDBOX CONSTRAINTS:
 
 import argparse
 import json
+import traceback
 from pathlib import Path
 from typing import Any, Dict, List
 
 import torch
+import torch.serialization as _ts
 
-# ultralytics 8.1.0 + torch >=2.6: weights_only default changed to True
-_orig_load = torch.load
-def _safe_load(*args, **kwargs):
-    kwargs.setdefault("weights_only", False)
-    return _orig_load(*args, **kwargs)
-torch.load = _safe_load
+# PyTorch 2.6+: default weights_only=True breaks YOLO .pt. Patch serialization.load
+# (Ultralytics may load via torch.serialization.load, not only torch.load).
+if not getattr(_ts, "_ng_yolo_load_patched", False):
+    _real_load = _ts.load
+
+    def _ng_load(*args, **kwargs):
+        kwargs.setdefault("weights_only", False)
+        return _real_load(*args, **kwargs)
+
+    _ts.load = _ng_load
+    torch.load = _ng_load
+    _ts._ng_yolo_load_patched = True
 
 from ultralytics import YOLO
 
@@ -93,23 +101,26 @@ def main() -> None:
     image_paths = sorted(p for p in input_dir.iterdir() if is_image(p))
     predictions: List[Dict[str, Any]] = []
 
-    with torch.no_grad():
+    # workers=8 (Ultralytics default) spawns threads and can OOM the 8GB host RAM sandbox.
+    _infer_kw: Dict[str, Any] = dict(
+        imgsz=args.imgsz,
+        conf=args.conf,
+        iou=args.iou,
+        max_det=args.max_det,
+        device=device,
+        half=use_cuda,
+        verbose=False,
+        workers=0,
+    )
+
+    with torch.inference_mode():
         for img_path in image_paths:
             try:
                 image_id = extract_image_id(img_path)
             except (ValueError, IndexError):
                 continue
 
-            results = model(
-                str(img_path),
-                imgsz=args.imgsz,
-                conf=args.conf,
-                iou=args.iou,
-                max_det=args.max_det,
-                device=device,
-                half=use_cuda,
-                verbose=False,
-            )
+            results = model(str(img_path), **_infer_kw)
 
             for result in results:
                 if result.boxes is None or len(result.boxes) == 0:
@@ -137,4 +148,9 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception:
+        # Sandbox may surface stdout on failure; helps debug "exit status 1"
+        traceback.print_exc()
+        raise
