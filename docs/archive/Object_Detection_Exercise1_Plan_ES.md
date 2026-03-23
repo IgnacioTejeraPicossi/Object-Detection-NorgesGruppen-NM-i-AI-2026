@@ -6,7 +6,7 @@
 Plan de la NM i AI 2026 para el Ejercicio 1: Object Detection.
 
 ....
-Sí. Te preparo un plan paso a paso, pensado para ejecutarlo con Cursor AI, con enfoque muy práctico para este Ejercicio 1: Object Detection.
+Plan paso a paso, pensado para ejecutarlo con Cursor AI, con enfoque muy práctico para este Ejercicio 1: Object Detection.
 Voy a asumir este objetivo:
 •	Objetivo competitivo inicial: conseguir una submission sólida y fiable rápido.
 •	Estrategia recomendada: empezar con una solución YOLOv8 fine-tuned porque encaja muy bien con el sandbox, las librerías preinstaladas y el límite de 300 segundos.
