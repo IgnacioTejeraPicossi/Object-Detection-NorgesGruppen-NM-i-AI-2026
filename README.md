@@ -37,9 +37,11 @@ Working repository for the three **NM i AI 2026** tracks (19–22 March 2026).
 The code lives under **`object_detection_ng/`**: scripts in `src/`, weights and `run.py` in `submission/`, and **`submission.zip`** built with `build_submission.py` for upload at  
 [Submit — NorgesGruppen Data](https://app.ainm.no/submit/norgesgruppen-data).
 
-### Recommended next improvement
+### Recommended next improvement (Colab + Drive)
 
-Train **YOLOv8m at 1280 px** on a **Google Colab GPU** using `object_detection_ng/colab_train_yolov8m.ipynb`, replace `submission/best.pt`, and rebuild the zip. That usually gives the largest gain over a CPU 640 baseline.
+Train **YOLOv8m at 1280 px** on a **Google Colab GPU** using `object_detection_ng/colab_train_yolov8m.ipynb`. The dataset can live on **Google Drive** (`NM_NGD_coco_dataset.zip`) and be pulled with **`gdown`** if Drive mount is unavailable. After training, download **`best.pt`** from Colab, place it in **`object_detection_ng/submission/best.pt`**, run **`build_submission.py`** locally, and upload **`submission.zip`**.
+
+**Full step-by-step** (Colab steps, Drive vs `gdown`, PyTorch/wandb/OOM fixes, building the zip on PC): see **[`object_detection_ng/README.md`](object_detection_ng/README.md)** → section **“Google Colab & Google Drive (GPU training)”**.
 
 ---
 
