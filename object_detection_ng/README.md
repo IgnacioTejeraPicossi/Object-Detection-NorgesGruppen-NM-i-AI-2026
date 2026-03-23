@@ -16,7 +16,7 @@ Detect and classify products on grocery shelves (NM i AI 2026).
 | **Official run** | Uploaded `submission.zip` → **Evaluation complete**, score **0.3889**, ~**18.8 s** GPU sandbox time. |
 | **Baseline model submitted** | YOLOv8**s**, imgsz **640**, trained on **CPU** (`experiments/exp01_yolov8s_640_cpu/`). |
 
-**Next step up:** train on **Google Colab (GPU)** with `colab_train_yolov8m.ipynb` (YOLOv8**m**, **1280**), download `best.pt` → `submission/best.pt` → `python src/build_submission.py ...`.
+**GPU upgrade (done in Colab + Drive):** **YOLOv8m** @ **1280** trained in **`colab_train_yolov8m.ipynb`**; `best.pt` → `submission/best.pt` → `build_submission.py`. See **§ Google Colab & Google Drive** below and root **`README.md`**.
 
 ---
 

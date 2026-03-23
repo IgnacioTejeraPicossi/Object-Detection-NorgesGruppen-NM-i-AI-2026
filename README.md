@@ -38,15 +38,21 @@ Working repository for the three **NM i AI 2026** tracks (19–22 March 2026).
 The code lives under **`object_detection_ng/`**: scripts in `src/`, weights and `run.py` in `submission/`, and **`submission.zip`** built with `build_submission.py` for upload at  
 [Submit — NorgesGruppen Data](https://app.ainm.no/submit/norgesgruppen-data).
 
-### Recommended next improvement (Colab + Drive)
+### Completed improvement: Colab + Google Drive (YOLOv8m @ 1280)
 
-Train **YOLOv8m at 1280 px** on a **Google Colab GPU** using `object_detection_ng/colab_train_yolov8m.ipynb`. The dataset can live on **Google Drive** (`NM_NGD_coco_dataset.zip`) and be pulled with **`gdown`** if Drive mount is unavailable. After training, download **`best.pt`** from Colab, place it in **`object_detection_ng/submission/best.pt`**, run **`build_submission.py`** locally, and upload **`submission.zip`**.
+We **carried out** GPU training on **[Google Colab](https://colab.research.google.com)** using **`object_detection_ng/colab_train_yolov8m.ipynb`**: **YOLOv8m** at **1280×1280**, **T4 GPU** runtime. The training dataset **`NM_NGD_coco_dataset.zip`** (~864 MB) was kept on **Google Drive** and/or downloaded in Colab with **`gdown`** when **`drive.mount`** was not available. After training, **`best.pt`** was taken from Colab (`/content/runs/.../weights/`), copied to **`object_detection_ng/submission/best.pt`**, and **`submission.zip`** was built on the PC with **`python src/build_submission.py`** for upload to the platform.
 
-**Full step-by-step** (Colab steps, Drive vs `gdown`, PyTorch/wandb/OOM fixes, building the zip on PC): see **[`object_detection_ng/README.md`](object_detection_ng/README.md)** → section **“Google Colab & Google Drive (GPU training)”**.
+**Full workflow** (Drive vs `gdown`, `unzip -o`, PyTorch / wandb / OOM fixes, local zip): **[`object_detection_ng/README.md`](object_detection_ng/README.md)** → **“Google Colab & Google Drive (GPU training)”**.
+
+| Colab notebook (`colab_train_yolov8m.ipynb`) — YOLOv8m @ 1280, T4 | Browser: Colab tab + Google Drive (dataset zip) |
+|:---:|:---:|
+| ![Colab training notebook](docs/assets/colab/colab_notebook.png) | ![Google Drive and Colab](docs/assets/colab/google_drive_colab_tabs.png) |
+
+*You can replace the placeholder images in `docs/assets/colab/` with your own screenshots.*
 
 ---
 
-## Documentation (English)
+## Documentation 
 
 | Resource | Link |
 |----------|------|
