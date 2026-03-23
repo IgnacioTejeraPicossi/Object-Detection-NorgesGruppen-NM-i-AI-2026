@@ -9,8 +9,9 @@ Working repository for the three **NM i AI 2026** tracks (19–22 March 2026).
 | # | Name | Folder | Status |
 |---|------|--------|--------|
 | 1 | **Object Detection** (NorgesGruppen Data) | [`object_detection_ng/`](object_detection_ng/) | **Implemented, tested, and submitted to the platform** |
-| 2 | Tripletex AI Accounting Agent | *(separate project)* | *(implemented elsewhere)* |
-| 3 | Astar Island | — | Not started |
+| 2 | Tripletex AI Accounting Agent | *(separate project)* | *(implemented https://github.com/IgnacioTejeraPicossi/AI-Accounting-Agent-Tripletex-NM-i-AI-2026 )*  |
+| 3 | Astar Island | *(separate project)* | *(implemented https://github.com/IgnacioTejeraPicossi/Viking-Civilisation-Prediction-Astar-Island-NM-i-AI-2026 )* |
+
 
 ---
 
