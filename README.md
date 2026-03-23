@@ -48,7 +48,6 @@ We **carried out** GPU training on **[Google Colab](https://colab.research.googl
 |:---:|:---:|
 | ![Colab training notebook](docs/assets/colab/colab_notebook.png) | ![Google Drive and Colab](docs/assets/colab/google_drive_colab_tabs.png) |
 
-*You can replace the placeholder images in `docs/assets/colab/` with your own screenshots.*
 
 ---
 
